@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>직원복지 의견 조사</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --pink:#FF8FAB;--pink-light:#FFD6E0;--lavender:#C9B8F0;--lav-light:#EDE8FF;
+  --sky:#87CEEB;--text:#1A1A2E;--sub:#7A6890;--surface:#FFFFFF;--border:#E8DCF5;
+}
+html{background:#FAF7FD;}
+body{font-family:'Noto Sans KR',sans-serif;-webkit-font-smoothing:antialiased;background:#FAF7FD;min-height:100vh;}
+.shell{max-width:420px;margin:0 auto;padding-bottom:60px;}
+.page{display:none;}.page.active{display:block;}
+
+.hero-bg{background:linear-gradient(135deg,#FFD6E0 0%,#EDE8FF 40%,#E0F4FF 80%,#E8FAF2 100%);border-radius:0 0 32px 32px;padding:28px 24px 36px;margin-bottom:20px;position:relative;overflow:hidden;}
+.hero-bg::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,143,171,0.25);}
+.hero-bg::after{content:'';position:absolute;bottom:-20px;left:20px;width:80px;height:80px;border-radius:50%;background:rgba(201,184,240,0.3);}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.75);border-radius:100px;padding:5px 14px;font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:14px;}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,#FF8FAB,#C9B8F0);}
+.hero-title{font-size:26px;font-weight:900;color:#1A1A2E;line-height:1.35;margin-bottom:8px;position:relative;z-index:1;}
+.hero-title em{font-style:normal;background:linear-gradient(90deg,#E05580,#9B7FD4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-desc{font-size:13px;color:#5A4A6A;line-height:1.7;position:relative;z-index:1;}
+
+.q-wrap{padding:0 16px;margin-bottom:12px;}
+.q-card{background:#fff;border-radius:20px;padding:20px;border:1.5px solid var(--border);position:relative;overflow:hidden;}
+.q-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF8FAB,#C9B8F0,#87CEEB);}
+.q-num-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px;}
+.q-num{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#FF8FAB,#C9B8F0);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.q-title{font-size:15px;font-weight:700;color:#1A1A2E;line-height:1.4;}
+.q-hint{font-size:12px;color:#7A6890;margin-top:3px;}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{padding:9px 16px;border-radius:100px;background:#F7F3FD;color:#2D1F4E;font-size:13px;font-weight:600;font-family:'Noto Sans KR',sans-serif;border:1.5px solid #D8C8EC;cursor:pointer;transition:all 0.18s;}
+.chip:hover{background:#EDE8FF;border-color:#C9B8F0;}
+.chip.on{background:linear-gradient(135deg,#FF8FAB,#C9B8F0);color:#fff;border-color:transparent;font-weight:700;}
+
+.star-row{display:flex;gap:8px;margin-bottom:8px;}
+.star{font-size:34px;cursor:pointer;color:#DDD0EE;transition:color 0.12s,transform 0.12s;line-height:1;}
+.star.on{color:#FF8FAB;}
+.star:active{transform:scale(1.25);}
+.star-txt{font-size:13px;color:#7A6890;font-weight:500;min-height:18px;}
+
+textarea{width:100%;border:1.5px solid var(--border);border-radius:14px;padding:14px;font-size:13px;font-family:'Noto Sans KR',sans-serif;color:#1A1A2E;background:#FAF7FD;resize:none;min-height:88px;outline:none;transition:border-color 0.15s;line-height:1.7;}
+textarea:focus{border-color:#C9B8F0;background:#fff;}
+textarea::placeholder{color:#B8A8CC;}
+
+.btn-wrap{padding:8px 16px 0;}
+.submit-btn{width:100%;padding:17px;background:linear-gradient(135deg,#FF8FAB 0%,#C9B8F0 60%,#87CEEB 100%);color:#fff;border:none;border-radius:16px;font-size:16px;font-weight:700;font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:opacity 0.15s,transform 0.1s;box-shadow:0 4px 20px rgba(201,184,240,0.45);}
+.submit-btn:disabled{opacity:0.6;cursor:not-allowed;}
+.submit-btn:active:not(:disabled){transform:scale(0.98);opacity:0.9;}
+
+.result-hero{background:linear-gradient(135deg,#FFD6E0 0%,#EDE8FF 45%,#E0F4FF 100%);border-radius:0 0 32px 32px;padding:28px 24px 32px;margin-bottom:20px;}
+.result-title{font-size:24px;font-weight:900;color:#1A1A2E;line-height:1.35;margin-bottom:6px;}
+.result-title em{font-style:normal;background:linear-gradient(90deg,#E05580,#9B7FD4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.result-desc{font-size:13px;color:#5A4A6A;}
+
+#wc-wrap{margin:0 16px 20px;height:180px;background:linear-gradient(135deg,#FFF0F5 0%,#F3EEFF 50%,#EAF6FF 100%);border-radius:20px;position:relative;overflow:hidden;border:1.5px solid #F0E8F5;}
+.wc-word{position:absolute;font-family:'Noto Sans KR',sans-serif;font-weight:700;white-space:nowrap;opacity:0;transition:opacity 0.55s;}
+
+.list-label{padding:0 20px;font-size:11px;font-weight:700;color:#7A6890;letter-spacing:0.08em;margin-bottom:10px;}
+.r-wrap{padding:0 16px;}
+.r-card{background:#fff;border-radius:18px;padding:18px 20px;margin-bottom:10px;border:1.5px solid var(--border);position:relative;overflow:hidden;}
+.r-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FFD6E0,#EDE8FF,#E0F4FF);}
+.r-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.r-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#FFD6E0,#EDE8FF);color:#2D1F4E;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.r-name{font-size:14px;font-weight:700;color:#1A1A2E;}
+.r-stars{font-size:13px;color:#FF8FAB;margin-top:2px;}
+.r-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
+.r-tag{padding:5px 12px;border-radius:100px;background:linear-gradient(135deg,#FFD6E0,#EDE8FF);color:#2D1F4E;font-size:12px;font-weight:600;}
+.r-section{margin-bottom:8px;}
+.r-section-label{font-size:11px;color:#7A6890;font-weight:500;margin-bottom:3px;}
+.r-section-text{font-size:13px;color:#3D2C4E;line-height:1.6;}
+
+.loading{text-align:center;padding:40px 20px;color:#7A6890;font-size:14px;}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#2D1F4E;color:#fff;padding:12px 24px;border-radius:100px;font-size:14px;font-weight:500;opacity:0;transition:opacity 0.3s;z-index:999;white-space:nowrap;}
+.toast.show{opacity:1;}
+.count-badge{display:inline-block;background:rgba(255,255,255,0.6);border-radius:100px;padding:4px 12px;font-size:12px;color:#5A4A6A;margin-top:10px;}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div id="page-survey" class="page active">
+    <div class="hero-bg">
+      <div class="badge"><span class="badge-dot"></span>직원복지위원회</div>
+      <div class="hero-title">여러분의 한마디가<br><em>복지를 바꿔요</em> 🌸</div>
+      <div class="hero-desc">모든 응답은 익명으로 취합되며<br>워크샵에서 함께 확인합니다.</div>
+    </div>
+
+    <div class="q-wrap">
+      <div class="q-card">
+        <div class="q-num-row">
+          <div class="q-num">1</div>
+          <div><div class="q-title">지금 가장 필요한 직원복지는?</div><div class="q-hint">여러 개 선택할 수 있어요</div></div>
+        </div>
+        <div class="chips" id="q1">
+          <button class="chip" onclick="tog(this)">심리상담·소진예방</button>
+          <button class="chip" onclick="tog(this)">슈퍼비전·교육 기회</button>
+          <button class="chip" onclick="tog(this)">휴게공간</button>
+          <button class="chip" onclick="tog(this)">동료 지지·팀워크</button>
+          <button class="chip" onclick="tog(this)">관리자·조직 소통</button>
+          <button class="chip" onclick="tog(this)">기타</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-wrap">
+      <div class="q-card">
+        <div class="q-num-row">
+          <div class="q-num">2</div>
+          <div><div class="q-title">현재 직원복지 만족도는?</div></div>
+        </div>
+        <div class="star-row" id="q2">
+          <span class="star" onclick="setStar(1)">★</span>
+          <span class="star" onclick="setStar(2)">★</span>
+          <span class="star" onclick="setStar(3)">★</span>
+          <span class="star" onclick="setStar(4)">★</span>
+          <span class="star" onclick="setStar(5)">★</span>
+        </div>
+        <div class="star-txt" id="star-txt">별을 눌러 선택해 주세요</div>
+      </div>
+    </div>
+
+    <div class="q-wrap">
+      <div class="q-card">
+        <div class="q-num-row">
+          <div class="q-num">3</div>
+          <div><div class="q-title">개선이 필요한 점이 있다면?</div></div>
+        </div>
+        <textarea id="q3" placeholder="자유롭게 적어주세요 🌿"></textarea>
+      </div>
+    </div>
+
+    <div class="q-wrap">
+      <div class="q-card">
+        <div class="q-num-row">
+          <div class="q-num">4</div>
+          <div><div class="q-title">하고 싶은 말이 있다면?</div></div>
+        </div>
+        <textarea id="q4" placeholder="의견, 건의, 격려 뭐든 환영해요 💐"></textarea>
+      </div>
+    </div>
+
+    <div class="btn-wrap">
+      <button class="submit-btn" id="submitBtn" onclick="doSubmit()">제출하기 🌸</button>
+    </div>
+  </div>
+
+  <div id="page-done" class="page">
+    <div class="hero-bg">
+      <div class="badge"><span class="badge-dot"></span>제출 완료</div>
+      <div class="hero-title">소중한 의견<br><em>감사합니다</em> 🌷</div>
+      <div class="hero-desc">응답이 저장되었어요.<br>워크샵에서 함께 확인해요!</div>
+    </div>
+  </div>
+
+  <div id="page-result" class="page">
+    <div class="result-hero">
+      <div class="badge"><span class="badge-dot"></span>취합 결과</div>
+      <div class="result-title">모인 목소리를<br><em>함께 봐요</em> 🌷</div>
+      <div class="result-desc">지금까지 제출된 응답이에요.</div>
+      <div class="count-badge" id="count-badge">불러오는 중...</div>
+    </div>
+    <div id="wc-wrap"></div>
+    <div class="list-label">전체 응답</div>
+    <div class="r-wrap" id="result-list"><div class="loading">응답을 불러오는 중이에요...</div></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, orderBy, query, serverTimestamp }
+  from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB8NM_NOUKrrcaCqlcYFx4RY7Byf9ZTE9Q",
+  authDomain: "welfare-survey-27ea3.firebaseapp.com",
+  projectId: "welfare-survey-27ea3",
+  storageBucket: "welfare-survey-27ea3.firebasestorage.app",
+  messagingSenderId: "7591705393",
+  appId: "1:7591705393:web:11e45adaa70aa1b0e28e10",
+  measurementId: "G-G9RP5NMMSL"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const starLabels = ['','많이 아쉬워요 😢','아쉬워요 😕','괜찮아요 🙂','만족해요 😊','매우 만족해요 🥰'];
+let starVal = 0;
+
+window.tog = (btn) => btn.classList.toggle('on');
+
+window.setStar = (n) => {
+  starVal = n;
+  document.querySelectorAll('#q2 .star').forEach((s,i) => s.classList.toggle('on', i < n));
+  document.getElementById('star-txt').textContent = starLabels[n];
+};
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+window.doSubmit = async () => {
+  const q1 = [...document.querySelectorAll('#q1 .chip.on')].map(b => b.textContent);
+  const q3 = document.getElementById('q3').value.trim();
+  const q4 = document.getElementById('q4').value.trim();
+  const btn = document.getElementById('submitBtn');
+
+  btn.disabled = true;
+  btn.textContent = '저장 중...';
+
+  try {
+    await addDoc(collection(db, 'responses'), {
+      q1, star: starVal || 0, q3, q4, createdAt: serverTimestamp()
+    });
+    showPage('page-done');
+  } catch(e) {
+    showToast('저장 중 오류가 발생했어요. 다시 시도해 주세요.');
+    btn.disabled = false;
+    btn.textContent = '제출하기 🌸';
+  }
+};
+
+// 결과 페이지: URL에 ?result 붙으면 자동으로 결과 표시
+if (location.search.includes('result')) {
+  showPage('page-result');
+  loadResult();
+}
+
+async function loadResult() {
+  try {
+    const q = query(collection(db, 'responses'), orderBy('createdAt', 'asc'));
+    const snap = await getDocs(q);
+    const responses = [];
+    snap.forEach(doc => responses.push(doc.data()));
+
+    document.getElementById('count-badge').textContent = `총 ${responses.length}명 참여`;
+    renderWordCloud(responses);
+    renderList(responses);
+  } catch(e) {
+    document.getElementById('result-list').innerHTML = '<div class="loading">데이터를 불러오지 못했어요.</div>';
+  }
+}
+
+const wcColors = ['#E05580','#9B7FD4','#4A9EC4','#D4607A','#7B5FC4','#3A8FAA','#C44A7A','#6B4FC4'];
+
+function renderWordCloud(responses) {
+  const freq = {};
+  responses.forEach(r => {
+    (r.q1||[]).forEach(w => { freq[w] = (freq[w]||0) + 3; });
+    [r.q3, r.q4].forEach(t => {
+      if(t) t.split(/[\s,。、]+/).filter(w => w.length > 1).forEach(w => { freq[w] = (freq[w]||0) + 1; });
+    });
+  });
+  const entries = Object.entries(freq).sort((a,b) => b[1]-a[1]).slice(0,16);
+  const max = entries[0]?.[1] || 1;
+  const canvas = document.getElementById('wc-wrap');
+  canvas.innerHTML = '';
+  const cw = canvas.offsetWidth || 360, ch = 180;
+  const placed = [];
+  entries.forEach(([word, count], i) => {
+    const size = Math.round(12 + (count/max)*22);
+    const el = document.createElement('span');
+    el.className = 'wc-word';
+    el.textContent = word;
+    el.style.fontSize = size+'px';
+    el.style.color = wcColors[i % wcColors.length];
+    canvas.appendChild(el);
+    const w = el.scrollWidth || word.length*size*0.65, h = size*1.4;
+    let ok = false;
+    for(let t=0;t<100;t++) {
+      const x = Math.random()*Math.max(1,cw-w-16)+8, y = Math.random()*Math.max(1,ch-h-16)+8;
+      if(!placed.some(p => x<p.x+p.w+8&&x+w+8>p.x&&y<p.y+p.h+8&&y+h+8>p.y)) {
+        el.style.left=x+'px'; el.style.top=y+'px'; placed.push({x,y,w,h}); ok=true; break;
+      }
+    }
+    if(!ok) { el.style.left=Math.random()*Math.max(1,cw-w)+'px'; el.style.top=Math.random()*Math.max(1,ch-h)+'px'; }
+    setTimeout(() => { el.style.opacity='1'; }, i*80);
+  });
+}
+
+function renderList(responses) {
+  const list = document.getElementById('result-list');
+  if(!responses.length) { list.innerHTML = '<div class="loading">아직 응답이 없어요.</div>'; return; }
+  list.innerHTML = '';
+  responses.forEach((r, i) => {
+    const d = document.createElement('div');
+    d.className = 'r-card';
+    let h = `<div class="r-top"><div class="r-avatar">${i+1}</div><div><div class="r-name">참여자 ${i+1}</div><div class="r-stars">${'★'.repeat(r.star||0)}${'☆'.repeat(5-(r.star||0))} ${starLabels[r.star||0]||''}</div></div></div>`;
+    if((r.q1||[]).length) h += `<div class="r-tags">${r.q1.map(t=>`<span class="r-tag">${t}</span>`).join('')}</div>`;
+    if(r.q3) h += `<div class="r-section"><div class="r-section-label">개선 필요</div><div class="r-section-text">${r.q3}</div></div>`;
+    if(r.q4) h += `<div class="r-section"><div class="r-section-label">한마디</div><div class="r-section-text">${r.q4}</div></div>`;
+    d.innerHTML = h;
+    list.appendChild(d);
+  });
+}
+</script>
+</body>
+</html>
