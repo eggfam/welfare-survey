@@ -15,7 +15,6 @@ html{background:#FAF7FD;}
 body{font-family:'Noto Sans KR',sans-serif;-webkit-font-smoothing:antialiased;background:#FAF7FD;min-height:100vh;}
 .shell{max-width:420px;margin:0 auto;padding-bottom:60px;}
 .page{display:none;}.page.active{display:block;}
-
 .hero-bg{background:linear-gradient(135deg,#FFD6E0 0%,#EDE8FF 40%,#E0F4FF 80%,#E8FAF2 100%);border-radius:0 0 32px 32px;padding:28px 24px 36px;margin-bottom:20px;position:relative;overflow:hidden;}
 .hero-bg::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,143,171,0.25);}
 .hero-bg::after{content:'';position:absolute;bottom:-20px;left:20px;width:80px;height:80px;border-radius:50%;background:rgba(201,184,240,0.3);}
@@ -24,7 +23,6 @@ body{font-family:'Noto Sans KR',sans-serif;-webkit-font-smoothing:antialiased;ba
 .hero-title{font-size:26px;font-weight:900;color:#1A1A2E;line-height:1.35;margin-bottom:8px;position:relative;z-index:1;}
 .hero-title em{font-style:normal;background:linear-gradient(90deg,#E05580,#9B7FD4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-desc{font-size:13px;color:#5A4A6A;line-height:1.7;position:relative;z-index:1;}
-
 .q-wrap{padding:0 16px;margin-bottom:12px;}
 .q-card{background:#fff;border-radius:20px;padding:20px;border:1.5px solid var(--border);position:relative;overflow:hidden;}
 .q-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF8FAB,#C9B8F0,#87CEEB);}
@@ -32,35 +30,28 @@ body{font-family:'Noto Sans KR',sans-serif;-webkit-font-smoothing:antialiased;ba
 .q-num{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#FF8FAB,#C9B8F0);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
 .q-title{font-size:15px;font-weight:700;color:#1A1A2E;line-height:1.4;}
 .q-hint{font-size:12px;color:#7A6890;margin-top:3px;}
-
 .chips{display:flex;flex-wrap:wrap;gap:8px;}
 .chip{padding:9px 16px;border-radius:100px;background:#F7F3FD;color:#2D1F4E;font-size:13px;font-weight:600;font-family:'Noto Sans KR',sans-serif;border:1.5px solid #D8C8EC;cursor:pointer;transition:all 0.18s;}
 .chip:hover{background:#EDE8FF;border-color:#C9B8F0;}
 .chip.on{background:linear-gradient(135deg,#FF8FAB,#C9B8F0);color:#fff;border-color:transparent;font-weight:700;}
-
 .star-row{display:flex;gap:8px;margin-bottom:8px;}
 .star{font-size:34px;cursor:pointer;color:#DDD0EE;transition:color 0.12s,transform 0.12s;line-height:1;}
 .star.on{color:#FF8FAB;}
 .star:active{transform:scale(1.25);}
 .star-txt{font-size:13px;color:#7A6890;font-weight:500;min-height:18px;}
-
 textarea{width:100%;border:1.5px solid var(--border);border-radius:14px;padding:14px;font-size:13px;font-family:'Noto Sans KR',sans-serif;color:#1A1A2E;background:#FAF7FD;resize:none;min-height:88px;outline:none;transition:border-color 0.15s;line-height:1.7;}
 textarea:focus{border-color:#C9B8F0;background:#fff;}
 textarea::placeholder{color:#B8A8CC;}
-
 .btn-wrap{padding:8px 16px 0;}
 .submit-btn{width:100%;padding:17px;background:linear-gradient(135deg,#FF8FAB 0%,#C9B8F0 60%,#87CEEB 100%);color:#fff;border:none;border-radius:16px;font-size:16px;font-weight:700;font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:opacity 0.15s,transform 0.1s;box-shadow:0 4px 20px rgba(201,184,240,0.45);}
 .submit-btn:disabled{opacity:0.6;cursor:not-allowed;}
 .submit-btn:active:not(:disabled){transform:scale(0.98);opacity:0.9;}
-
 .result-hero{background:linear-gradient(135deg,#FFD6E0 0%,#EDE8FF 45%,#E0F4FF 100%);border-radius:0 0 32px 32px;padding:28px 24px 32px;margin-bottom:20px;}
 .result-title{font-size:24px;font-weight:900;color:#1A1A2E;line-height:1.35;margin-bottom:6px;}
 .result-title em{font-style:normal;background:linear-gradient(90deg,#E05580,#9B7FD4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .result-desc{font-size:13px;color:#5A4A6A;}
-
 #wc-wrap{margin:0 16px 20px;height:180px;background:linear-gradient(135deg,#FFF0F5 0%,#F3EEFF 50%,#EAF6FF 100%);border-radius:20px;position:relative;overflow:hidden;border:1.5px solid #F0E8F5;}
 .wc-word{position:absolute;font-family:'Noto Sans KR',sans-serif;font-weight:700;white-space:nowrap;opacity:0;transition:opacity 0.55s;}
-
 .list-label{padding:0 20px;font-size:11px;font-weight:700;color:#7A6890;letter-spacing:0.08em;margin-bottom:10px;}
 .r-wrap{padding:0 16px;}
 .r-card{background:#fff;border-radius:18px;padding:18px 20px;margin-bottom:10px;border:1.5px solid var(--border);position:relative;overflow:hidden;}
@@ -74,7 +65,6 @@ textarea::placeholder{color:#B8A8CC;}
 .r-section{margin-bottom:8px;}
 .r-section-label{font-size:11px;color:#7A6890;font-weight:500;margin-bottom:3px;}
 .r-section-text{font-size:13px;color:#3D2C4E;line-height:1.6;}
-
 .loading{text-align:center;padding:40px 20px;color:#7A6890;font-size:14px;}
 .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#2D1F4E;color:#fff;padding:12px 24px;border-radius:100px;font-size:14px;font-weight:500;opacity:0;transition:opacity 0.3s;z-index:999;white-space:nowrap;}
 .toast.show{opacity:1;}
@@ -89,7 +79,6 @@ textarea::placeholder{color:#B8A8CC;}
       <div class="hero-title">여러분의 한마디가<br><em>복지를 바꿔요</em> 🌸</div>
       <div class="hero-desc">모든 응답은 익명으로 취합되며<br>워크샵에서 함께 확인합니다.</div>
     </div>
-
     <div class="q-wrap">
       <div class="q-card">
         <div class="q-num-row">
@@ -106,7 +95,6 @@ textarea::placeholder{color:#B8A8CC;}
         </div>
       </div>
     </div>
-
     <div class="q-wrap">
       <div class="q-card">
         <div class="q-num-row">
@@ -123,7 +111,6 @@ textarea::placeholder{color:#B8A8CC;}
         <div class="star-txt" id="star-txt">별을 눌러 선택해 주세요</div>
       </div>
     </div>
-
     <div class="q-wrap">
       <div class="q-card">
         <div class="q-num-row">
@@ -133,7 +120,6 @@ textarea::placeholder{color:#B8A8CC;}
         <textarea id="q3" placeholder="자유롭게 적어주세요 🌿"></textarea>
       </div>
     </div>
-
     <div class="q-wrap">
       <div class="q-card">
         <div class="q-num-row">
@@ -143,7 +129,6 @@ textarea::placeholder{color:#B8A8CC;}
         <textarea id="q4" placeholder="의견, 건의, 격려 뭐든 환영해요 💐"></textarea>
       </div>
     </div>
-
     <div class="btn-wrap">
       <button class="submit-btn" id="submitBtn" onclick="doSubmit()">제출하기 🌸</button>
     </div>
@@ -178,7 +163,7 @@ import { getFirestore, collection, addDoc, getDocs, orderBy, query, serverTimest
   from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB8NM_NOUKrrcaCqlcYFx4RY7Byf9ZTE9Q",
+  apiKey: "AIzaSyAeMFHVe8ums0qgVzgepT6K_mPLL_9ni3g",
   authDomain: "welfare-survey-27ea3.firebaseapp.com",
   projectId: "welfare-survey-27ea3",
   storageBucket: "welfare-survey-27ea3.firebasestorage.app",
@@ -194,7 +179,6 @@ const starLabels = ['','많이 아쉬워요 😢','아쉬워요 😕','괜찮아
 let starVal = 0;
 
 window.tog = (btn) => btn.classList.toggle('on');
-
 window.setStar = (n) => {
   starVal = n;
   document.querySelectorAll('#q2 .star').forEach((s,i) => s.classList.toggle('on', i < n));
@@ -207,7 +191,6 @@ function showToast(msg) {
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2500);
 }
-
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -218,10 +201,8 @@ window.doSubmit = async () => {
   const q3 = document.getElementById('q3').value.trim();
   const q4 = document.getElementById('q4').value.trim();
   const btn = document.getElementById('submitBtn');
-
   btn.disabled = true;
   btn.textContent = '저장 중...';
-
   try {
     await addDoc(collection(db, 'responses'), {
       q1, star: starVal || 0, q3, q4, createdAt: serverTimestamp()
@@ -234,7 +215,6 @@ window.doSubmit = async () => {
   }
 };
 
-// 결과 페이지: URL에 ?result 붙으면 자동으로 결과 표시
 if (location.search.includes('result')) {
   showPage('page-result');
   loadResult();
@@ -246,7 +226,6 @@ async function loadResult() {
     const snap = await getDocs(q);
     const responses = [];
     snap.forEach(doc => responses.push(doc.data()));
-
     document.getElementById('count-badge').textContent = `총 ${responses.length}명 참여`;
     renderWordCloud(responses);
     renderList(responses);
@@ -256,7 +235,6 @@ async function loadResult() {
 }
 
 const wcColors = ['#E05580','#9B7FD4','#4A9EC4','#D4607A','#7B5FC4','#3A8FAA','#C44A7A','#6B4FC4'];
-
 function renderWordCloud(responses) {
   const freq = {};
   responses.forEach(r => {
