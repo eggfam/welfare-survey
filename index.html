@@ -7,15 +7,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --pink:#FF8FAB;--pink-light:#FFD6E0;--lavender:#C9B8F0;--lav-light:#EDE8FF;
-  --sky:#87CEEB;--text:#1A1A2E;--sub:#7A6890;--surface:#FFFFFF;--border:#E8DCF5;
-}
+:root{--pink:#FF8FAB;--pink-light:#FFD6E0;--lavender:#C9B8F0;--lav-light:#EDE8FF;--sky:#87CEEB;--text:#1A1A2E;--sub:#7A6890;--surface:#FFFFFF;--border:#E8DCF5;}
 html{background:#FAF7FD;}
 body{font-family:'Noto Sans KR',sans-serif;-webkit-font-smoothing:antialiased;background:#FAF7FD;min-height:100vh;}
 .shell{max-width:420px;margin:0 auto;padding-bottom:60px;}
 .page{display:none;}.page.active{display:block;}
 
+/* 공통 */
 .hero-bg{background:linear-gradient(135deg,#FFD6E0 0%,#EDE8FF 40%,#E0F4FF 80%,#E8FAF2 100%);border-radius:0 0 32px 32px;padding:28px 24px 36px;margin-bottom:20px;position:relative;overflow:hidden;}
 .hero-bg::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,143,171,0.25);}
 .hero-bg::after{content:'';position:absolute;bottom:-20px;left:20px;width:80px;height:80px;border-radius:50%;background:rgba(201,184,240,0.3);}
@@ -24,7 +22,9 @@ body{font-family:'Noto Sans KR',sans-serif;-webkit-font-smoothing:antialiased;ba
 .hero-title{font-size:26px;font-weight:900;color:#1A1A2E;line-height:1.35;margin-bottom:8px;position:relative;z-index:1;}
 .hero-title em{font-style:normal;background:linear-gradient(90deg,#E05580,#9B7FD4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-desc{font-size:13px;color:#5A4A6A;line-height:1.7;position:relative;z-index:1;}
+.count-badge{display:inline-block;background:rgba(255,255,255,0.6);border-radius:100px;padding:4px 12px;font-size:12px;color:#5A4A6A;margin-top:10px;}
 
+/* 설문 */
 .q-wrap{padding:0 16px;margin-bottom:12px;}
 .q-card{background:#fff;border-radius:20px;padding:20px;border:1.5px solid var(--border);position:relative;overflow:hidden;}
 .q-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF8FAB,#C9B8F0,#87CEEB);}
@@ -32,37 +32,49 @@ body{font-family:'Noto Sans KR',sans-serif;-webkit-font-smoothing:antialiased;ba
 .q-num{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#FF8FAB,#C9B8F0);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
 .q-title{font-size:15px;font-weight:700;color:#1A1A2E;line-height:1.4;}
 .q-hint{font-size:12px;color:#7A6890;margin-top:3px;}
-
 .chips{display:flex;flex-wrap:wrap;gap:8px;}
 .chip{padding:9px 16px;border-radius:100px;background:#F7F3FD;color:#2D1F4E;font-size:13px;font-weight:600;font-family:'Noto Sans KR',sans-serif;border:1.5px solid #D8C8EC;cursor:pointer;transition:all 0.18s;}
 .chip:hover{background:#EDE8FF;border-color:#C9B8F0;}
 .chip.on{background:linear-gradient(135deg,#FF8FAB,#C9B8F0);color:#fff;border-color:transparent;font-weight:700;}
-
 .star-row{display:flex;gap:8px;margin-bottom:8px;}
 .star{font-size:34px;cursor:pointer;color:#DDD0EE;transition:color 0.12s,transform 0.12s;line-height:1;}
 .star.on{color:#FF8FAB;}
 .star:active{transform:scale(1.25);}
 .star-txt{font-size:13px;color:#7A6890;font-weight:500;min-height:18px;}
-
 textarea{width:100%;border:1.5px solid var(--border);border-radius:14px;padding:14px;font-size:13px;font-family:'Noto Sans KR',sans-serif;color:#1A1A2E;background:#FAF7FD;resize:none;min-height:88px;outline:none;transition:border-color 0.15s;line-height:1.7;}
 textarea:focus{border-color:#C9B8F0;background:#fff;}
 textarea::placeholder{color:#B8A8CC;}
-
 .btn-wrap{padding:8px 16px 0;}
 .submit-btn{width:100%;padding:17px;background:linear-gradient(135deg,#FF8FAB 0%,#C9B8F0 60%,#87CEEB 100%);color:#fff;border:none;border-radius:16px;font-size:16px;font-weight:700;font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:opacity 0.15s,transform 0.1s;box-shadow:0 4px 20px rgba(201,184,240,0.45);}
 .submit-btn:disabled{opacity:0.6;cursor:not-allowed;}
 .submit-btn:active:not(:disabled){transform:scale(0.98);opacity:0.9;}
 
+/* 결과 */
 .result-hero{background:linear-gradient(135deg,#FFD6E0 0%,#EDE8FF 45%,#E0F4FF 100%);border-radius:0 0 32px 32px;padding:28px 24px 32px;margin-bottom:20px;}
 .result-title{font-size:24px;font-weight:900;color:#1A1A2E;line-height:1.35;margin-bottom:6px;}
 .result-title em{font-style:normal;background:linear-gradient(90deg,#E05580,#9B7FD4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .result-desc{font-size:13px;color:#5A4A6A;}
-
-#wc-wrap{margin:0 16px 20px;height:180px;background:linear-gradient(135deg,#FFF0F5 0%,#F3EEFF 50%,#EAF6FF 100%);border-radius:20px;position:relative;overflow:hidden;border:1.5px solid #F0E8F5;}
-.wc-word{position:absolute;font-family:'Noto Sans KR',sans-serif;font-weight:700;white-space:nowrap;opacity:0;transition:opacity 0.55s;}
-
-.list-label{padding:0 20px;font-size:11px;font-weight:700;color:#7A6890;letter-spacing:0.08em;margin-bottom:10px;}
-.r-wrap{padding:0 16px;}
+#wc-wrap{margin:0 16px 20px;height:200px;background:linear-gradient(135deg,#FFF0F5 0%,#F3EEFF 50%,#EAF6FF 100%);border-radius:20px;position:relative;overflow:hidden;border:1.5px solid #F0E8F5;}
+.wc-word{position:absolute;font-family:'Noto Sans KR',sans-serif;font-weight:700;white-space:nowrap;opacity:0;transition:opacity 0.6s;}
+.summary-wrap{padding:0 16px;margin-bottom:16px;}
+.summary-card{background:#fff;border-radius:20px;padding:20px;border:1.5px solid var(--border);position:relative;overflow:hidden;}
+.summary-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF8FAB,#C9B8F0,#87CEEB);}
+.summary-title{font-size:13px;font-weight:700;color:#7A6890;letter-spacing:0.05em;margin-bottom:14px;}
+.stat-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.stat-label{font-size:13px;color:#3D2C4E;font-weight:500;min-width:90px;}
+.stat-bar-wrap{flex:1;margin:0 10px;height:8px;background:#F0E8F5;border-radius:100px;overflow:hidden;}
+.stat-bar{height:100%;border-radius:100px;background:linear-gradient(90deg,#FF8FAB,#C9B8F0);transition:width 0.8s ease;}
+.stat-count{font-size:12px;color:#9B89B0;min-width:28px;text-align:right;}
+.avg-stars{font-size:22px;font-weight:900;color:#FF8FAB;margin-bottom:2px;}
+.avg-label{font-size:12px;color:#7A6890;}
+.divider{height:1px;background:var(--border);margin:14px 0;}
+.toggle-wrap{padding:0 16px;margin-bottom:8px;}
+.toggle-btn{width:100%;padding:14px;background:#fff;border:1.5px solid var(--border);border-radius:16px;font-size:14px;font-weight:600;font-family:'Noto Sans KR',sans-serif;color:#3D2C4E;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.2s;}
+.toggle-btn:hover{background:#F7F3FD;}
+.toggle-arrow{transition:transform 0.3s;font-size:12px;}
+.toggle-arrow.open{transform:rotate(180deg);}
+.list-wrap{padding:0 16px;overflow:hidden;max-height:0;transition:max-height 0.5s ease;}
+.list-wrap.open{max-height:9999px;}
 .r-card{background:#fff;border-radius:18px;padding:18px 20px;margin-bottom:10px;border:1.5px solid var(--border);position:relative;overflow:hidden;}
 .r-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FFD6E0,#EDE8FF,#E0F4FF);}
 .r-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
@@ -74,28 +86,54 @@ textarea::placeholder{color:#B8A8CC;}
 .r-section{margin-bottom:8px;}
 .r-section-label{font-size:11px;color:#7A6890;font-weight:500;margin-bottom:3px;}
 .r-section-text{font-size:13px;color:#3D2C4E;line-height:1.6;}
-
 .loading{text-align:center;padding:40px 20px;color:#7A6890;font-size:14px;}
 .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#2D1F4E;color:#fff;padding:12px 24px;border-radius:100px;font-size:14px;font-weight:500;opacity:0;transition:opacity 0.3s;z-index:999;white-space:nowrap;}
 .toast.show{opacity:1;}
-.count-badge{display:inline-block;background:rgba(255,255,255,0.6);border-radius:100px;padding:4px 12px;font-size:12px;color:#5A4A6A;margin-top:10px;}
+
+/* 요약 보고 페이지 */
+.rpt-shell{max-width:480px;margin:0 auto;padding:32px 20px 60px;}
+.rpt-header{text-align:center;margin-bottom:32px;}
+.rpt-title{font-size:22px;font-weight:900;color:#1A1A2E;margin-bottom:6px;}
+.rpt-subtitle{font-size:13px;color:#7A6890;}
+.rpt-date{font-size:12px;color:#B8A8CC;margin-top:4px;}
+.rpt-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;}
+.rpt-metric{background:#fff;border-radius:16px;padding:18px;border:1.5px solid var(--border);text-align:center;}
+.rpt-metric-val{font-size:28px;font-weight:900;color:#E05580;line-height:1;}
+.rpt-metric-label{font-size:12px;color:#7A6890;margin-top:6px;}
+.rpt-section{background:#fff;border-radius:20px;padding:22px;border:1.5px solid var(--border);margin-bottom:16px;position:relative;overflow:hidden;}
+.rpt-section::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF8FAB,#C9B8F0,#87CEEB);}
+.rpt-section-title{font-size:13px;font-weight:700;color:#7A6890;letter-spacing:0.05em;margin-bottom:16px;}
+.rpt-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.rpt-bar-label{font-size:13px;font-weight:500;color:#2D1F4E;min-width:110px;}
+.rpt-bar-wrap{flex:1;height:10px;background:#F0E8F5;border-radius:100px;overflow:hidden;}
+.rpt-bar{height:100%;border-radius:100px;background:linear-gradient(90deg,#FF8FAB,#C9B8F0);transition:width 1s ease;}
+.rpt-bar-count{font-size:12px;color:#9B89B0;min-width:32px;text-align:right;}
+.rpt-opinion-block{margin-bottom:12px;}
+.rpt-opinion-label{font-size:11px;font-weight:700;color:#C9B8F0;letter-spacing:0.06em;margin-bottom:8px;}
+.rpt-opinion-item{background:#FAF7FD;border-radius:12px;padding:12px 14px;margin-bottom:6px;font-size:13px;color:#3D2C4E;line-height:1.6;border-left:3px solid #FFD6E0;}
+.rpt-opinion-item.q4{border-left-color:#C9B8F0;}
+.rpt-stars-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.rpt-stars-val{font-size:32px;font-weight:900;color:#FF8FAB;}
+.rpt-stars-sub{font-size:13px;color:#7A6890;}
+.rpt-star-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.rpt-star-lbl{font-size:12px;color:#7A6890;min-width:24px;text-align:right;}
+.rpt-star-wrap{flex:1;height:8px;background:#F0E8F5;border-radius:100px;overflow:hidden;}
+.rpt-star-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,#FFB800,#FF8FAB);transition:width 1s ease;}
+.rpt-star-cnt{font-size:11px;color:#9B89B0;min-width:24px;}
 </style>
 </head>
 <body>
-<div class="shell">
+<div class="shell" id="main-shell">
+  <!-- 설문 페이지 -->
   <div id="page-survey" class="page active">
     <div class="hero-bg">
       <div class="badge"><span class="badge-dot"></span>직원복지위원회</div>
       <div class="hero-title">여러분의 한마디가<br><em>복지를 바꿔요</em> 🌸</div>
       <div class="hero-desc">모든 응답은 익명으로 취합되며<br>워크샵에서 함께 확인합니다.</div>
     </div>
-
     <div class="q-wrap">
       <div class="q-card">
-        <div class="q-num-row">
-          <div class="q-num">1</div>
-          <div><div class="q-title">지금 가장 필요한 직원복지는?</div><div class="q-hint">여러 개 선택할 수 있어요</div></div>
-        </div>
+        <div class="q-num-row"><div class="q-num">1</div><div><div class="q-title">지금 가장 필요한 직원복지는?</div><div class="q-hint">여러 개 선택할 수 있어요</div></div></div>
         <div class="chips" id="q1">
           <button class="chip" onclick="tog(this)">심리상담·소진예방</button>
           <button class="chip" onclick="tog(this)">슈퍼비전·교육 기회</button>
@@ -106,49 +144,33 @@ textarea::placeholder{color:#B8A8CC;}
         </div>
       </div>
     </div>
-
     <div class="q-wrap">
       <div class="q-card">
-        <div class="q-num-row">
-          <div class="q-num">2</div>
-          <div><div class="q-title">현재 직원복지 만족도는?</div></div>
-        </div>
+        <div class="q-num-row"><div class="q-num">2</div><div><div class="q-title">현재 직원복지 만족도는?</div></div></div>
         <div class="star-row" id="q2">
-          <span class="star" onclick="setStar(1)">★</span>
-          <span class="star" onclick="setStar(2)">★</span>
-          <span class="star" onclick="setStar(3)">★</span>
-          <span class="star" onclick="setStar(4)">★</span>
-          <span class="star" onclick="setStar(5)">★</span>
+          <span class="star" onclick="setStar(1)">★</span><span class="star" onclick="setStar(2)">★</span><span class="star" onclick="setStar(3)">★</span><span class="star" onclick="setStar(4)">★</span><span class="star" onclick="setStar(5)">★</span>
         </div>
         <div class="star-txt" id="star-txt">별을 눌러 선택해 주세요</div>
       </div>
     </div>
-
     <div class="q-wrap">
       <div class="q-card">
-        <div class="q-num-row">
-          <div class="q-num">3</div>
-          <div><div class="q-title">개선이 필요한 점이 있다면?</div></div>
-        </div>
+        <div class="q-num-row"><div class="q-num">3</div><div><div class="q-title">개선이 필요한 점이 있다면?</div></div></div>
         <textarea id="q3" placeholder="자유롭게 적어주세요 🌿"></textarea>
       </div>
     </div>
-
     <div class="q-wrap">
       <div class="q-card">
-        <div class="q-num-row">
-          <div class="q-num">4</div>
-          <div><div class="q-title">하고 싶은 말이 있다면?</div></div>
-        </div>
+        <div class="q-num-row"><div class="q-num">4</div><div><div class="q-title">하고 싶은 말이 있다면?</div></div></div>
         <textarea id="q4" placeholder="의견, 건의, 격려 뭐든 환영해요 💐"></textarea>
       </div>
     </div>
-
     <div class="btn-wrap">
       <button class="submit-btn" id="submitBtn" onclick="doSubmit()">제출하기 🌸</button>
     </div>
   </div>
 
+  <!-- 완료 페이지 -->
   <div id="page-done" class="page">
     <div class="hero-bg">
       <div class="badge"><span class="badge-dot"></span>제출 완료</div>
@@ -157,6 +179,7 @@ textarea::placeholder{color:#B8A8CC;}
     </div>
   </div>
 
+  <!-- 결과 상세 페이지 -->
   <div id="page-result" class="page">
     <div class="result-hero">
       <div class="badge"><span class="badge-dot"></span>취합 결과</div>
@@ -165,8 +188,59 @@ textarea::placeholder{color:#B8A8CC;}
       <div class="count-badge" id="count-badge">불러오는 중...</div>
     </div>
     <div id="wc-wrap"></div>
-    <div class="list-label">전체 응답</div>
-    <div class="r-wrap" id="result-list"><div class="loading">응답을 불러오는 중이에요...</div></div>
+    <div class="summary-wrap">
+      <div class="summary-card">
+        <div class="summary-title">필요한 복지 항목</div>
+        <div id="stat-list"><div class="loading">불러오는 중...</div></div>
+        <div class="divider"></div>
+        <div class="avg-stars" id="avg-stars">-</div>
+        <div class="avg-label">평균 만족도</div>
+      </div>
+    </div>
+    <div class="toggle-wrap">
+      <button class="toggle-btn" onclick="toggleList()">
+        <span>전체 응답 보기</span>
+        <span class="toggle-arrow" id="toggle-arrow">▼</span>
+      </button>
+    </div>
+    <div class="list-wrap" id="list-wrap">
+      <div id="result-list"><div class="loading">응답을 불러오는 중이에요...</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 요약 보고 페이지 -->
+<div class="rpt-shell" id="page-summary" style="display:none;">
+  <div class="rpt-header">
+    <div class="rpt-title">직원복지 의견수렴 결과</div>
+    <div class="rpt-subtitle">정읍천사마을 직원복지위원회</div>
+    <div class="rpt-date" id="rpt-date"></div>
+  </div>
+  <div class="rpt-metrics">
+    <div class="rpt-metric">
+      <div class="rpt-metric-val" id="rpt-count">-</div>
+      <div class="rpt-metric-label">참여 인원</div>
+    </div>
+    <div class="rpt-metric">
+      <div class="rpt-metric-val" id="rpt-avg">-</div>
+      <div class="rpt-metric-label">평균 만족도 / 5점</div>
+    </div>
+  </div>
+  <div class="rpt-section">
+    <div class="rpt-section-title">필요한 복지 항목 (복수 선택)</div>
+    <div id="rpt-bars"></div>
+  </div>
+  <div class="rpt-section">
+    <div class="rpt-section-title">만족도 분포</div>
+    <div class="rpt-stars-row">
+      <div class="rpt-stars-val" id="rpt-avg2">-점</div>
+      <div class="rpt-stars-sub">전체 평균</div>
+    </div>
+    <div id="rpt-star-dist"></div>
+  </div>
+  <div class="rpt-section">
+    <div class="rpt-section-title">서술형 의견</div>
+    <div id="rpt-opinions"></div>
   </div>
 </div>
 
@@ -189,12 +263,11 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
 const starLabels = ['','많이 아쉬워요 😢','아쉬워요 😕','괜찮아요 🙂','만족해요 😊','매우 만족해요 🥰'];
+const options = ['심리상담·소진예방','슈퍼비전·교육 기회','휴게공간','동료 지지·팀워크','관리자·조직 소통','기타'];
 let starVal = 0;
 
 window.tog = (btn) => btn.classList.toggle('on');
-
 window.setStar = (n) => {
   starVal = n;
   document.querySelectorAll('#q2 .star').forEach((s,i) => s.classList.toggle('on', i < n));
@@ -203,14 +276,13 @@ window.setStar = (n) => {
 
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2500);
 }
-
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+  const el = document.getElementById(id);
+  if(el) el.classList.add('active');
 }
 
 window.doSubmit = async () => {
@@ -218,93 +290,173 @@ window.doSubmit = async () => {
   const q3 = document.getElementById('q3').value.trim();
   const q4 = document.getElementById('q4').value.trim();
   const btn = document.getElementById('submitBtn');
-
-  btn.disabled = true;
-  btn.textContent = '저장 중...';
-
+  btn.disabled = true; btn.textContent = '저장 중...';
   try {
-    await addDoc(collection(db, 'responses'), {
-      q1, star: starVal || 0, q3, q4, createdAt: serverTimestamp()
-    });
+    await addDoc(collection(db, 'responses'), { q1, star: starVal||0, q3, q4, createdAt: serverTimestamp() });
     showPage('page-done');
   } catch(e) {
     showToast('저장 중 오류가 발생했어요. 다시 시도해 주세요.');
-    btn.disabled = false;
-    btn.textContent = '제출하기 🌸';
+    btn.disabled = false; btn.textContent = '제출하기 🌸';
   }
 };
 
-// 결과 페이지: URL에 ?result 붙으면 자동으로 결과 표시
-if (location.search.includes('result')) {
-  showPage('page-result');
-  loadResult();
+let listOpen = false;
+window.toggleList = () => {
+  listOpen = !listOpen;
+  document.getElementById('list-wrap').classList.toggle('open', listOpen);
+  document.getElementById('toggle-arrow').classList.toggle('open', listOpen);
+};
+
+const mode = location.search.includes('summary') ? 'summary' : location.search.includes('result') ? 'result' : 'survey';
+
+if(mode === 'result') { showPage('page-result'); loadData(renderResult); }
+else if(mode === 'summary') {
+  document.getElementById('main-shell').style.display = 'none';
+  document.getElementById('page-summary').style.display = 'block';
+  loadData(renderSummary);
 }
 
-async function loadResult() {
+async function loadData(cb) {
   try {
     const q = query(collection(db, 'responses'), orderBy('createdAt', 'asc'));
     const snap = await getDocs(q);
     const responses = [];
     snap.forEach(doc => responses.push(doc.data()));
-
-    document.getElementById('count-badge').textContent = `총 ${responses.length}명 참여`;
-    renderWordCloud(responses);
-    renderList(responses);
+    cb(responses);
   } catch(e) {
-    document.getElementById('result-list').innerHTML = '<div class="loading">데이터를 불러오지 못했어요.</div>';
+    showToast('데이터를 불러오지 못했어요.');
   }
 }
 
-const wcColors = ['#E05580','#9B7FD4','#4A9EC4','#D4607A','#7B5FC4','#3A8FAA','#C44A7A','#6B4FC4'];
+function renderResult(responses) {
+  document.getElementById('count-badge').textContent = `총 ${responses.length}명 참여`;
+  renderWordCloud(responses);
+  renderStatList(responses);
+  renderList(responses);
+}
 
+function renderStatList(responses) {
+  const freq = {}; options.forEach(o => freq[o] = 0);
+  let starSum = 0, starCount = 0;
+  responses.forEach(r => {
+    (r.q1||[]).forEach(w => { if(freq[w]!==undefined) freq[w]++; });
+    if(r.star) { starSum += r.star; starCount++; }
+  });
+  const max = Math.max(...Object.values(freq), 1);
+  const avg = starCount ? (starSum/starCount).toFixed(1) : '-';
+  document.getElementById('avg-stars').textContent = avg + '점 / 5점';
+  const sorted = options.map(o => [o, freq[o]]).sort((a,b) => b[1]-a[1]);
+  document.getElementById('stat-list').innerHTML = sorted.map(([label, count]) => `
+    <div class="stat-row">
+      <div class="stat-label">${label}</div>
+      <div class="stat-bar-wrap"><div class="stat-bar" style="width:${Math.round(count/max*100)}%"></div></div>
+      <div class="stat-count">${count}명</div>
+    </div>`).join('');
+}
+
+// 요약 보고 렌더
+function renderSummary(responses) {
+  const now = new Date();
+  document.getElementById('rpt-date').textContent = `${now.getFullYear()}년 ${now.getMonth()+1}월 ${now.getDate()}일 기준`;
+  document.getElementById('rpt-count').textContent = responses.length + '명';
+
+  const freq = {}; options.forEach(o => freq[o] = 0);
+  let starSum = 0, starCount = 0;
+  const starDist = {1:0,2:0,3:0,4:0,5:0};
+  const q3s = [], q4s = [];
+
+  responses.forEach(r => {
+    (r.q1||[]).forEach(w => { if(freq[w]!==undefined) freq[w]++; });
+    if(r.star) { starSum += r.star; starCount++; starDist[r.star]++; }
+    if(r.q3) q3s.push(r.q3);
+    if(r.q4) q4s.push(r.q4);
+  });
+
+  const avg = starCount ? (starSum/starCount).toFixed(1) : '-';
+  document.getElementById('rpt-avg').textContent = avg;
+  document.getElementById('rpt-avg2').textContent = avg + '점';
+
+  // 바차트
+  const maxFreq = Math.max(...Object.values(freq), 1);
+  const sorted = options.map(o => [o, freq[o]]).sort((a,b) => b[1]-a[1]);
+  document.getElementById('rpt-bars').innerHTML = sorted.map(([label, count]) => `
+    <div class="rpt-bar-row">
+      <div class="rpt-bar-label">${label}</div>
+      <div class="rpt-bar-wrap"><div class="rpt-bar" style="width:${Math.round(count/maxFreq*100)}%"></div></div>
+      <div class="rpt-bar-count">${count}명</div>
+    </div>`).join('');
+
+  // 별점 분포
+  const maxDist = Math.max(...Object.values(starDist), 1);
+  document.getElementById('rpt-star-dist').innerHTML = [5,4,3,2,1].map(n => `
+    <div class="rpt-star-bar-row">
+      <div class="rpt-star-lbl">${n}점</div>
+      <div class="rpt-star-wrap"><div class="rpt-star-fill" style="width:${Math.round(starDist[n]/maxDist*100)}%"></div></div>
+      <div class="rpt-star-cnt">${starDist[n]}명</div>
+    </div>`).join('');
+
+  // 서술형
+  let opinionsHtml = '';
+  if(q3s.length) {
+    opinionsHtml += `<div class="rpt-opinion-block"><div class="rpt-opinion-label">개선이 필요한 점</div>${q3s.map(t=>`<div class="rpt-opinion-item">${t}</div>`).join('')}</div>`;
+  }
+  if(q4s.length) {
+    opinionsHtml += `<div class="rpt-opinion-block"><div class="rpt-opinion-label">하고 싶은 말</div>${q4s.map(t=>`<div class="rpt-opinion-item q4">${t}</div>`).join('')}</div>`;
+  }
+  if(!opinionsHtml) opinionsHtml = '<div style="font-size:13px;color:#B8A8CC;text-align:center;padding:16px 0;">서술형 응답이 없어요.</div>';
+  document.getElementById('rpt-opinions').innerHTML = opinionsHtml;
+}
+
+const wcColors = ['#E05580','#9B7FD4','#4A9EC4','#D4607A','#7B5FC4','#3A8FAA','#C44A7A','#6B4FC4'];
 function renderWordCloud(responses) {
   const freq = {};
   responses.forEach(r => {
     (r.q1||[]).forEach(w => { freq[w] = (freq[w]||0) + 3; });
-    [r.q3, r.q4].forEach(t => {
-      if(t) t.split(/[\s,。、]+/).filter(w => w.length > 1).forEach(w => { freq[w] = (freq[w]||0) + 1; });
-    });
+    [r.q3, r.q4].forEach(t => { if(t) t.split(/[\s,。、]+/).filter(w=>w.length>1).forEach(w=>{ freq[w]=(freq[w]||0)+1; }); });
   });
-  const entries = Object.entries(freq).sort((a,b) => b[1]-a[1]).slice(0,16);
-  const max = entries[0]?.[1] || 1;
+  const entries = Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,16);
+  const max = entries[0]?.[1]||1;
   const canvas = document.getElementById('wc-wrap');
   canvas.innerHTML = '';
-  const cw = canvas.offsetWidth || 360, ch = 180;
+  const cw = canvas.offsetWidth||360, ch = 200;
   const placed = [];
+  if(!document.getElementById('wc-keyframes')) {
+    const s = document.createElement('style'); s.id='wc-keyframes';
+    s.textContent=`@keyframes float-0{0%,100%{transform:translate(0,0)}50%{transform:translate(5px,-6px)}}@keyframes float-1{0%,100%{transform:translate(0,0)}50%{transform:translate(-6px,5px)}}@keyframes float-2{0%,100%{transform:translate(0,0)}50%{transform:translate(6px,5px)}}@keyframes float-3{0%,100%{transform:translate(0,0)}50%{transform:translate(-5px,-5px)}}`;
+    document.head.appendChild(s);
+  }
   entries.forEach(([word, count], i) => {
-    const size = Math.round(12 + (count/max)*22);
+    const size = Math.round(12+(count/max)*22);
     const el = document.createElement('span');
-    el.className = 'wc-word';
-    el.textContent = word;
-    el.style.fontSize = size+'px';
-    el.style.color = wcColors[i % wcColors.length];
+    el.className='wc-word'; el.textContent=word;
+    el.style.fontSize=size+'px'; el.style.color=wcColors[i%wcColors.length];
+    const dur=4+Math.random()*4, delay=Math.random()*3;
+    el.style.animation=`float-${i%4} ${dur}s ${delay}s ease-in-out infinite`;
     canvas.appendChild(el);
-    const w = el.scrollWidth || word.length*size*0.65, h = size*1.4;
-    let ok = false;
-    for(let t=0;t<100;t++) {
-      const x = Math.random()*Math.max(1,cw-w-16)+8, y = Math.random()*Math.max(1,ch-h-16)+8;
-      if(!placed.some(p => x<p.x+p.w+8&&x+w+8>p.x&&y<p.y+p.h+8&&y+h+8>p.y)) {
+    const w=el.scrollWidth||word.length*size*0.65, h=size*1.4;
+    let ok=false;
+    for(let t=0;t<100;t++){
+      const x=Math.random()*Math.max(1,cw-w-16)+8, y=Math.random()*Math.max(1,ch-h-16)+8;
+      if(!placed.some(p=>x<p.x+p.w+8&&x+w+8>p.x&&y<p.y+p.h+8&&y+h+8>p.y)){
         el.style.left=x+'px'; el.style.top=y+'px'; placed.push({x,y,w,h}); ok=true; break;
       }
     }
-    if(!ok) { el.style.left=Math.random()*Math.max(1,cw-w)+'px'; el.style.top=Math.random()*Math.max(1,ch-h)+'px'; }
-    setTimeout(() => { el.style.opacity='1'; }, i*80);
+    if(!ok){el.style.left=Math.random()*Math.max(1,cw-w)+'px';el.style.top=Math.random()*Math.max(1,ch-h)+'px';}
+    setTimeout(()=>{el.style.opacity='1';},i*80);
   });
 }
 
 function renderList(responses) {
   const list = document.getElementById('result-list');
-  if(!responses.length) { list.innerHTML = '<div class="loading">아직 응답이 없어요.</div>'; return; }
-  list.innerHTML = '';
-  responses.forEach((r, i) => {
-    const d = document.createElement('div');
-    d.className = 'r-card';
-    let h = `<div class="r-top"><div class="r-avatar">${i+1}</div><div><div class="r-name">참여자 ${i+1}</div><div class="r-stars">${'★'.repeat(r.star||0)}${'☆'.repeat(5-(r.star||0))} ${starLabels[r.star||0]||''}</div></div></div>`;
-    if((r.q1||[]).length) h += `<div class="r-tags">${r.q1.map(t=>`<span class="r-tag">${t}</span>`).join('')}</div>`;
-    if(r.q3) h += `<div class="r-section"><div class="r-section-label">개선 필요</div><div class="r-section-text">${r.q3}</div></div>`;
-    if(r.q4) h += `<div class="r-section"><div class="r-section-label">한마디</div><div class="r-section-text">${r.q4}</div></div>`;
-    d.innerHTML = h;
-    list.appendChild(d);
+  if(!responses.length){list.innerHTML='<div class="loading">아직 응답이 없어요.</div>';return;}
+  list.innerHTML='';
+  responses.forEach((r,i)=>{
+    const d=document.createElement('div'); d.className='r-card';
+    let h=`<div class="r-top"><div class="r-avatar">${i+1}</div><div><div class="r-name">참여자 ${i+1}</div><div class="r-stars">${'★'.repeat(r.star||0)}${'☆'.repeat(5-(r.star||0))} ${starLabels[r.star||0]||''}</div></div></div>`;
+    if((r.q1||[]).length) h+=`<div class="r-tags">${r.q1.map(t=>`<span class="r-tag">${t}</span>`).join('')}</div>`;
+    if(r.q3) h+=`<div class="r-section"><div class="r-section-label">개선 필요</div><div class="r-section-text">${r.q3}</div></div>`;
+    if(r.q4) h+=`<div class="r-section"><div class="r-section-label">한마디</div><div class="r-section-text">${r.q4}</div></div>`;
+    d.innerHTML=h; list.appendChild(d);
   });
 }
 </script>
